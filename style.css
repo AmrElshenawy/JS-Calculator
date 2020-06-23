@@ -11,7 +11,7 @@ body{
     border-radius: 3%;
     overflow: hidden;
     box-shadow: 0 0 3px 3px rgb(43, 42, 42);
-    background-color: rgb(141, 137, 137);
+    /* background-color: rgb(141, 137, 137); */
 }
 .display{
     height: 100px;
@@ -25,25 +25,30 @@ body{
     grid-template-rows: repeat(5, 1fr);
     height: 40vh;
     width: 35vh;
-    gap: 1px;
+    /* gap: 1px;   */
 }
 .button{
-    border: none;
+    /* border: none; */
     outline: none;
     box-sizing: border-box;
     color: #48484A;
     font-size: 1.5em;
     border-radius: 3%;
+    border-color: solid 1px #48484A;
+}
+.center-numbers{
+    background-color: rgb(187, 200, 233);
 }
 .center-numbers:hover{
     background-color: rgb(207, 205, 202);
     border-radius: 20%;
 }
 .deletes{
-    background-color: rgb(211, 210, 207);;
+    background-color: rgb(223, 155, 30);;
 }
 .deletes:hover{
     background-color: #FF9800;
+    border-radius: 20%;
 }
 .operations{
     background-color: rgb(40, 64, 84);
@@ -52,4 +57,5 @@ body{
 .operations:hover{
     background-color: rgb(66, 107, 141);
     color: orange;
+    border-radius: 20%;
 }
