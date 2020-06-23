@@ -25,7 +25,7 @@ body{
     grid-template-rows: repeat(5, 1fr);
     height: 30vh;
     width: 25vh;
-    /* gap: 1px;   */
+    gap: 1px;  
 }
 .button{
     /* border: none; */
