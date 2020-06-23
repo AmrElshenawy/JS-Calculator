@@ -16,6 +16,11 @@ body{
     height: 70px;
     width: 350px;
     background-color: rgb(245, 241, 241);
+    text-align: right;
+    padding: 20px 70px 0 98px;
+    font-size: 30px;
+    color: rgb(87, 86, 90);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .buttons{
     display: grid;
@@ -29,7 +34,7 @@ body{
     box-sizing: border-box;
     color: #48484A;
     font-size: 1.5em;
-    border-radius: 3%;
+    border-radius: 15%;
 }
 .center-numbers{
     background-color: rgb(189, 206, 232);
@@ -37,14 +42,14 @@ body{
 }
 .center-numbers:hover{
     background-color: rgb(68, 185, 197);
-    border-radius: 20%;
+    border-radius: 30%;
 }
 .deletes{
     background-color: rgb(236, 165, 34);
 }
 .deletes:hover{
     background-color: #FF9800;
-    border-radius: 20%;
+    border-radius: 30%;
 }
 .operations{
     background-color: rgb(40, 64, 84);
@@ -53,5 +58,5 @@ body{
 .operations:hover{
     background-color: rgb(66, 107, 141);
     color: orange;
-    border-radius: 20%;
+    border-radius: 30%;
 }
