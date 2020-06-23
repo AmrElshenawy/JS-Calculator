@@ -1,0 +1,55 @@
+body{
+    background-image: url("work desktop.jpg");
+}
+.calculator{
+    margin: 80px auto;
+    width: 35vh;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3%;
+    overflow: hidden;
+    box-shadow: 0 0 3px 3px rgb(43, 42, 42);
+    background-color: rgb(141, 137, 137);
+}
+.display{
+    height: 100px;
+    width: 350px;
+    border: 1px solid rgb(119, 117, 117);
+    background-color: white;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 40vh;
+    width: 35vh;
+    gap: 1px;
+}
+.button{
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #48484A;
+    font-size: 1.5em;
+    border-radius: 3%;
+}
+.center-numbers:hover{
+    background-color: rgb(207, 205, 202);
+    border-radius: 20%;
+}
+.deletes{
+    background-color: rgb(211, 210, 207);;
+}
+.deletes:hover{
+    background-color: #FF9800;
+}
+.operations{
+    background-color: rgb(40, 64, 84);
+    color: seashell;
+}
+.operations:hover{
+    background-color: rgb(66, 107, 141);
+    color: orange;
+}
