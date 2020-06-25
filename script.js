@@ -1,21 +1,20 @@
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
 
+let input = 0;
 // buttons.addEventListener('click', displayinput());
 
 buttons.forEach((button) => {
-
-    // and for each one we add a 'click' listener
     button.addEventListener('click', (e) => {
-      displayinput();
+    input = e.target.innerHTML;
+    displayinput(input);
     });
   });
 
-displayinput = () => {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = '123456';
-    display.appendChild(paragraph);
+displayinput = (input) => {
+    display.textContent = input;
 }
+
 
 add = (a, b) => {return a + b;}
 
