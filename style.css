@@ -51,11 +51,11 @@ body{
     background-color: #FF9800;
     border-radius: 30%;
 }
-.operations{
+.operations,.modify{
     background-color: rgb(40, 64, 84);
     color: seashell;
 }
-.operations:hover{
+.operations:hover, .modify:hover{
     background-color: rgb(66, 107, 141);
     color: orange;
     border-radius: 30%;
