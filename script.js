@@ -18,11 +18,11 @@ buttons.forEach((button) => {
   });
 
 displayinput = (input) => {
-    if(flag === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10){
+    if(flag === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
         display.textContent = outdisplay;
     }
-    else if(data.target.classList[1] === 'operations' && data.target.innerHTML !== '='){
+    else if(data.target.classList[1] === 'operations'){
         flag = true;
         number1 = parseInt(outdisplay);
         outdisplay = '';
@@ -31,11 +31,11 @@ displayinput = (input) => {
         display.textContent = outdisplay;
         outdisplay = '';
     }
-    else if(flag === true && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10 ){
+    else if(flag === true && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
         display.textContent = outdisplay;
     }
-    else if(flag === true && data.target.classList[1] === 'operations'){
+    else if(flag === true && data.target.classList[1] === 'equals'){
         flag = false;
         number2 = parseInt(outdisplay);
         switch(operator){
@@ -52,7 +52,6 @@ displayinput = (input) => {
                 display.textContent = divide(number1, number2);
                 break;
         }
-
     }   
 }
 

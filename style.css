@@ -51,11 +51,11 @@ body{
     background-color: #FF9800;
     border-radius: 30%;
 }
-.operations,.modify{
+.operations,.modify, .equals{
     background-color: rgb(40, 64, 84);
     color: seashell;
 }
-.operations:hover, .modify:hover{
+.operations:hover, .modify:hover, .equals:hover{
     background-color: rgb(66, 107, 141);
     color: orange;
     border-radius: 30%;
