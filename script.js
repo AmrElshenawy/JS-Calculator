@@ -4,6 +4,8 @@ const buttons = document.querySelectorAll('button');
 let input;
 let data;
 let outdisplay = '';
+let flag = false;
+let operator = '';
 let number1 = 0;
 let number2 = 0;
 
@@ -16,21 +18,42 @@ buttons.forEach((button) => {
   });
 
 displayinput = (input) => {
-    if(number2 === 0 && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10){
+    if(flag === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10){
         outdisplay += input;
         display.textContent = outdisplay;
     }
-    if(data.target.classList[1] === 'operations'){
+    else if(data.target.classList[1] === 'operations' && data.target.innerHTML !== '='){
+        flag = true;
         number1 = parseInt(outdisplay);
         outdisplay = '';
-        outdisplay += input;
+        outdisplay = input;
+        operator = input;
         display.textContent = outdisplay;
         outdisplay = '';
     }
-    if(number1 !== 0 && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10 ){
+    else if(flag === true && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 10 ){
         outdisplay += input;
         display.textContent = outdisplay;
     }
+    else if(flag === true && data.target.classList[1] === 'operations'){
+        flag = false;
+        number2 = parseInt(outdisplay);
+        switch(operator){
+            case '+':
+                display.textContent = add(number1, number2);
+                break;
+            case '-':
+                display.textContent = subtract(number1, number2);
+                break;
+            case '×':
+                display.textContent = multiply(number1, number2);
+                break;
+            case '÷':
+                display.textContent = divide(number1, number2);
+                break;
+        }
+
+    }   
 }
 
 
