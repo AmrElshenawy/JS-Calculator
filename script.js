@@ -1,14 +1,50 @@
+// CALCULATOR FUNCTIONS //=========================================================
+add = (a, b) => {return a + b;}
+
+subtract = (a, b) => {return (a) - (b);}
+
+multiply = (a, b) => {return a * b;}
+
+divide = (a, b) => {
+    if(b == 0){
+        return "Math Error!"
+    }
+    else{
+        return a / b;
+    }
+}
+
+operate = (operator, a, b) => {
+    switch(operator){
+        case '+':
+            return add(a, b);
+        case '-':
+            return subtract(a, b);
+        case '×':
+            return multiply(a, b);
+        case '÷':
+            return divide(a, b);
+    }
+}
+//===============================================================================
+// DOM //========================================================================
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
-
+/* 
 let input;
-let data;
+
 let outdisplay = '';
-let num1 = false;
-let num2 = false;
-let operator = '';
 let number1 = 0;
-let number2 = 0;
+let number2 = 0; */
+let data;
+let num1Selected = false;
+let num2Selected = false;
+let operatorSelected = false;
+let solutionFound = false;
+
+let value1 = null, value2 = null, operator = null;
+
+
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -58,21 +94,3 @@ displayinput = (input) => {
 }
 
 
-add = (a, b) => {return a + b;}
-
-subtract = (a, b) => {return (a) - (b);}
-
-multiply = (a, b) => {return a * b;}
-
-divide = (a, b) => {return a / b;}
-
-operate = (operation, a, b) => {
-    if(operation === "+")
-        add(a, b);
-    else if(operation === "-")
-        subtract(a, b);
-    else if(operation === "*")
-        multiply(a, b);
-    else if(operation === "/")
-        divide(a, b);
-}
