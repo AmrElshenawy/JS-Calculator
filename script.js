@@ -4,7 +4,8 @@ const buttons = document.querySelectorAll('button');
 let input;
 let data;
 let outdisplay = '';
-let flag = false;
+let num1 = false;
+let num2 = false;
 let operator = '';
 let number1 = 0;
 let number2 = 0;
@@ -18,24 +19,25 @@ buttons.forEach((button) => {
   });
 
 displayinput = (input) => {
-    if(flag === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
+    if(num1 === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
         display.textContent = outdisplay;
     }
-    else if(data.target.classList[1] === 'operations'){
-        flag = true;
-        number1 = parseInt(outdisplay);
+    if(data.target.classList[1] === 'operations'){
+        num1 = true;
+        number1 = +outdisplay;
         outdisplay = '';
         outdisplay = input;
         operator = input;
         display.textContent = outdisplay;
         outdisplay = '';
     }
-    else if(flag === true && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
+    if(num1 === true && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
+        number2 += +outdisplay;
         display.textContent = outdisplay;
     }
-    else if(flag === true && data.target.classList[1] === 'equals'){
+    if(/* flag === true  &&*/ data.target.classList[1] === 'equals'){
         flag = false;
         number2 = parseInt(outdisplay);
         switch(operator){
