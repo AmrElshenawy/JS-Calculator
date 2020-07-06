@@ -19,7 +19,7 @@ operate = (operator, a, b) => {
         case '×':
             return multiply(a, b);
         case '÷':
-            return divide(a, b).toFixed(2);
+            return +divide(a, b).toFixed(2);
     }
 }
 //===============================================================================
@@ -68,6 +68,9 @@ buttons.forEach((button) => {
             break;
         case '%':
             percentage();
+            break;
+        case '⌫':
+            dlt();
             break;
     }
     });
@@ -155,20 +158,24 @@ invert = () => {
         value2 = null;
         operatorSelected = false;
         num2Selected = false;
+        value1 = String(value1);
     }
     else if(num2Selected){
         value2 *= -1;
         displayNum2.textContent = value2;
+        value2 = String(value2);
     }
     else if(num1Selected && !operatorSelected){
         value1 *= -1;
         displayNum1.textContent = value1;
+        value1 = String(value1);
     }
 }
 percentage = () => {
     if(solutionFound){
         value1 /= 100;
-        displayNum1.textContent = value1.toFixed(3);
+        displayNum1.textContent = +value1.toFixed(3);
+        value1 = String(value1);
         solutionFound = false;
         value2 = null;
         operatorSelected = false;
@@ -176,11 +183,13 @@ percentage = () => {
     }
     else if(num2Selected){
         value2 /= 100;
-        displayNum2.textContent = value2.toFixed(3);
+        displayNum2.textContent = +value2.toFixed(3);
+        value2 = String(value2);
     }
     else if(num1Selected && !operatorSelected){
         value1 /= 100;
-        displayNum1.textContent = value1.toFixed(3);
+        displayNum1.textContent = +value1.toFixed(3);
+        value1 = String(value1);
     }
 }
 addPeriod = () => {
@@ -207,6 +216,19 @@ addPeriod = () => {
     }
     displayNum1.textContent = value1;
     displayNum2.textContent = value2;
+}
+dlt = () => {
+    if(solutionFound == true) clear();
+    if(num1Selected && !operatorSelected){
+        value1 = Math.floor(value1 / 10);
+        displayNum1.textContent = value1;
+        value1 = String(value1);
+    }
+    else if(num2Selected){
+        value2 = Math.floor(value1 / 10);
+        displayNum2.textContent = value2;
+        value2 = String(value2);
+    }
 }
 clear = () => {
     num1Selected = false;
