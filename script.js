@@ -74,7 +74,6 @@ buttons.forEach((button) => {
   });
 addValue = (input) => {
     if(solutionFound == true) clear();
-
     if(!num1Selected){
         num1Selected = true;
         value1 = input;
@@ -84,7 +83,7 @@ addValue = (input) => {
             value1 = input;
         } 
         else if(value1.length < 9){
-            value1 = value1 + input;
+            value1 += input;
         }
     }
     else if(num1Selected && operatorSelected){
@@ -97,7 +96,7 @@ addValue = (input) => {
                 value2 = input;
             }
             else if(value2.length < 9){
-                value2 = value2 + input;
+                value2 += input;
             }
         }
     }
@@ -106,7 +105,6 @@ addValue = (input) => {
 }
 selectOperator = (input) => {
     if(!num1Selected) return;
-
     if(num1Selected && !num2Selected){
         operator = input;
         displayOperator.textContent = input;
@@ -170,7 +168,7 @@ invert = () => {
 percentage = () => {
     if(solutionFound){
         value1 /= 100;
-        displayNum1.textContent = value1.toFixed(4);
+        displayNum1.textContent = value1.toFixed(3);
         solutionFound = false;
         value2 = null;
         operatorSelected = false;
@@ -178,12 +176,37 @@ percentage = () => {
     }
     else if(num2Selected){
         value2 /= 100;
-        displayNum2.textContent = value2.toFixed(4);
+        displayNum2.textContent = value2.toFixed(3);
     }
     else if(num1Selected && !operatorSelected){
         value1 /= 100;
-        displayNum1.textContent = value1.toFixed(4);
+        displayNum1.textContent = value1.toFixed(3);
     }
+}
+addPeriod = () => {
+    if(solutionFound == true) clear();
+    if(!num1Selected){
+        num1Selected = true;
+        value1 = "0.";
+    }
+    else if(num1Selected && !operatorSelected){
+        if(value1.length < 9 && !value1.includes('.')){
+            value1 += ".";
+        }
+    }
+    else if(num1Selected && operatorSelected){
+        if(!num1Selected){
+            num2Selected = true;
+            value2 = "0.";
+        }
+        else if(num2Selected){
+            if(value2.length < 9 && !value2.includes('.')){
+                value2 += '.';
+            }
+        }
+    }
+    displayNum1.textContent = value1;
+    displayNum2.textContent = value2;
 }
 clear = () => {
     num1Selected = false;
