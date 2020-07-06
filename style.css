@@ -22,6 +22,9 @@ body{
     color: rgb(87, 86, 90);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.displayers{
+    display: inline-block;
+}
 .buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);

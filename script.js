@@ -28,33 +28,139 @@ operate = (operator, a, b) => {
 }
 //===============================================================================
 // DOM //========================================================================
-const display = document.querySelector('.display');
+const displayNum1 = document.querySelector('#displayNum1');
+const displayNum2 = document.querySelector('#displayNum2');
+const displayOperator = document.querySelector('#displayOperator');
 const buttons = document.querySelectorAll('button');
 /* 
-let input;
+let 
 
 let outdisplay = '';
 let number1 = 0;
 let number2 = 0; */
-let data;
-let num1Selected = false;
-let num2Selected = false;
-let operatorSelected = false;
-let solutionFound = false;
 
-let value1 = null, value2 = null, operator = null;
-
-
+let data,
+    input,
+    htmlSource,
+    num1Selected = false, 
+    num2Selected = false,
+    operatorSelected = false,
+    solutionFound = false,
+    value1 = null, 
+    value2 = null, 
+    operator = null;
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-    data = e;    
+    data = e;   
     input = e.target.innerHTML;
-    displayinput(input);
+    htmlSource = e.target.classList[1];
+    switch(htmlSource){
+        case 'center-numbers':
+            addValue(input);
+            break;
+        case 'operations':
+            selectOperator(input);
+            break;
+    }
+    switch(input){
+        case 'C':
+            clear();
+            break;
+        case '±':
+            invert();
+            break;
+        case '=':
+            findSolution();
+            break;
+        case '.':
+            addPeriod();
+            break;
+    }
     });
   });
 
-displayinput = (input) => {
+addValue = (input) => {
+    //if(solutionFound == true) clear();
+
+    if(!num1Selected){
+        num1Selected = true;
+        value1 = input;
+    } 
+    else if(num1Selected && !operatorSelected){
+        if(value1 === 0 && !value1.includes('.')){
+            value1 = input;
+        } 
+        else if(value1.length < 9){
+            value1 = value1 + input;
+        }
+    }
+    else if(num1Selected && operatorSelected){
+        if(!num2Selected){
+            num2Selected = true;
+            value2 = input;
+        }
+        else if(num2Selected){
+            if(value2 === 0 && !value2.includes('.')){
+                value2 = input;
+            }
+            else if(value2.length < 9){
+                value2 = value2 + input;
+            }
+        }
+    }
+    displayNum1.textContent = value1;
+    displayNum2.textContent = value2;
+}
+
+selectOperator = (input) => {
+    if(!num1Selected) return;
+
+    if(num1Selected && !num2Selected){
+        operator = input;
+        displayOperator.textContent = input;
+        operatorSelected = true;
+    }
+    else if(num1Selected && num2Selected && !solutionFound){
+        findSolution();
+        operator = input;
+        displayOperator.textContent = input;
+        operatorSelected = true;
+        num2Selected = false;
+        value2 = null;
+        solutionFound = false;
+    }
+    else if(num1Selected && num2Selected && solutionFound){
+        operator = input;
+        displayOperator.textContent = input;
+        operatorSelected = true;
+        num2Selected = false;
+        value2 = null;
+        solutionFound = false;
+    }
+}
+
+findSolution = () => {
+    if(num1Selected && operatorSelected && num2Selected){
+        value1 = +value1;
+        value2 = +value2;
+        
+        let solution = operate(operator, value1, value2);
+        if(solution == "Math Error!"){
+            clear();
+            displayNum1.textContent = solution;
+        }
+        else{
+            value1 = String(solution);
+            displayNum1.textContent = value1;
+            displayNum2.textContent = "";
+            displayOperator.textContent = "";
+            solutionFound = true;
+        }
+    }
+}
+
+/* displayinput = (input) => {
     if(num1 === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
         display.textContent = outdisplay;
@@ -73,7 +179,7 @@ displayinput = (input) => {
         number2 += +outdisplay;
         display.textContent = outdisplay;
     }
-    if(/* flag === true  &&*/ data.target.classList[1] === 'equals'){
+    if(/* flag === true  && data.target.classList[1] === 'equals'){
         flag = false;
         number2 = parseInt(outdisplay);
         switch(operator){
@@ -91,6 +197,4 @@ displayinput = (input) => {
                 break;
         }
     }   
-}
-
-
+} */
