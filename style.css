@@ -17,13 +17,16 @@ body{
     width: 350px;
     background-color: rgb(245, 241, 241);
     text-align: right;
-    padding: 20px 70px 0 98px;
-    font-size: 30px;
+    padding: 25px 70px 0 65px;
+    font-size: 20px;
     color: rgb(87, 86, 90);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .displayers{
     display: inline-block;
+}
+div:empty{
+    display: none;
 }
 .buttons{
     display: grid;

@@ -23,7 +23,7 @@ operate = (operator, a, b) => {
         case '×':
             return multiply(a, b);
         case '÷':
-            return divide(a, b);
+            return divide(a, b).toFixed(2);
     }
 }
 //===============================================================================
@@ -32,12 +32,6 @@ const displayNum1 = document.querySelector('#displayNum1');
 const displayNum2 = document.querySelector('#displayNum2');
 const displayOperator = document.querySelector('#displayOperator');
 const buttons = document.querySelectorAll('button');
-/* 
-let 
-
-let outdisplay = '';
-let number1 = 0;
-let number2 = 0; */
 
 let data,
     input,
@@ -76,12 +70,15 @@ buttons.forEach((button) => {
         case '.':
             addPeriod();
             break;
+        case '%':
+            percentage();
+            break;
     }
     });
   });
 
 addValue = (input) => {
-    //if(solutionFound == true) clear();
+    if(solutionFound == true) clear();
 
     if(!num1Selected){
         num1Selected = true;
@@ -160,7 +157,66 @@ findSolution = () => {
     }
 }
 
-/* displayinput = (input) => {
+invert = () => {
+    if(solutionFound){
+        value1 *= -1;
+        displayNum1.textContent = value1;
+        solutionFound = false;
+        value2 = null;
+        operatorSelected = false;
+        num2Selected = false;
+    }
+    else if(num2Selected){
+        value2 *= -1;
+        displayNum2.textContent = value2;
+    }
+    else if(num1Selected && !operatorSelected){
+        value1 *= -1;
+        displayNum1.textContent = value1;
+    }
+}
+
+percentage = () => {
+    if(solutionFound){
+        value1 /= 100;
+        displayNum1.textContent = value1.toFixed(4);
+        solutionFound = false;
+        value2 = null;
+        operatorSelected = false;
+        num2Selected = false;
+    }
+    else if(num2Selected){
+        value2 /= 100;
+        displayNum2.textContent = value2.toFixed(4);
+    }
+    else if(num1Selected && !operatorSelected){
+        value1 /= 100;
+        displayNum1.textContent = value1.toFixed(4);
+    }
+}
+
+clear = () => {
+    num1Selected = false;
+    num2Selected = false;
+    operatorSelected = false;
+    solutionFound = false;
+    value1 = null;
+    value2 = null;
+    operator = null;
+    displayNum1.textContent = "";
+    displayOperator.textContent = "";
+    displayNum2.textContent = "";
+}
+
+/* 
+let 
+
+let outdisplay = '';
+let number1 = 0;
+let number2 = 0;
+
+
+displayinput = (input) => {
     if(num1 === false && data.target.classList[1] === 'center-numbers' && outdisplay.length <= 8){
         outdisplay += input;
         display.textContent = outdisplay;
