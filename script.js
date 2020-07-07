@@ -3,12 +3,10 @@ add = (a, b) => {return a + b;}
 subtract = (a, b) => {return (a) - (b);}
 multiply = (a, b) => {return a * b;}
 divide = (a, b) => {
-    if(b == 0){
-        return "Math Error!"
-    }
-    else{
+    if(isFinite(a / b)){
         return a / b;
     }
+    return "Math Error!"
 }
 operate = (operator, a, b) => {
     switch(operator){
@@ -19,7 +17,7 @@ operate = (operator, a, b) => {
         case '×':
             return multiply(a, b);
         case '÷':
-            return +divide(a, b).toFixed(2);
+            return divide(a, b);
     }
 }
 //===============================================================================
@@ -41,6 +39,9 @@ let data,
     operator = null;
 
 document.addEventListener('keydown', (e) => {
+    if(e.keyCode === 13){
+        event.preventDefault();
+    }
     const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
     if(key != null) key.click();
 });
@@ -145,7 +146,7 @@ findSolution = () => {
         let solution = operate(operator, value1, value2);
         if(solution == "Math Error!"){
             clear();
-            displayNum1.textContent = solution;
+            displayNum1.textContent = "Math Error!";
         }
         else{
             value1 = String(solution);
