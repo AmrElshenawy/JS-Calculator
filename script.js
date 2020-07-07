@@ -40,6 +40,11 @@ let data,
     value2 = null, 
     operator = null;
 
+document.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+    if(key != null) key.click();
+});
+
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
     data = e;   
@@ -74,7 +79,8 @@ buttons.forEach((button) => {
             break;
     }
     });
-  });
+});
+
 addValue = (input) => {
     if(solutionFound == true) clear();
     if(!num1Selected){
