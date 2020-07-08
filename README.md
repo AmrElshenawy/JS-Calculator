@@ -1,7 +1,7 @@
 # JS-Calculator
 This is a project that builds a fully functional calculator in JavaScript, HTML and CSS
 
-Checkout the calculator here:[Website](https://amrelshenawy.github.io/JS-Calculator/)
+Checkout the calculator here: [Website](https://amrelshenawy.github.io/JS-Calculator/)
 
 The calculator has the following options:
 * Addition
